@@ -1,29 +1,28 @@
-# MICROMOUSE-V2 
+# MOCAP-NODE-V1
 
-An open-source, high-performance autonomous Micromouse designed for competitive maze-solving. Built around a powerful **STM32F405RGT6** core, this platform is engineered for rapid acceleration, precise high-speed movement, and reliable real-time sensor processing.
+An open-source, ultra-compact (35 x 35 mm) wireless motion-capture (MoCap) node designed for body-worn biomechanical tracking. Built around an **ESP32-C3 Mini** and a 9-axis **Bosch BNO055** IMU, this platform is engineered for low-latency, peer-to-peer orientation streaming across multi-node clusters.
 
 ---
 
 ## Key Hardware Features
 
-* **Core Processing:** Powered by the **STM32F405RGT6** (ARM Cortex-M4 at 168 MHz with 1MB Flash / 192KB RAM), running custom maze-solving and motor-control algorithms.
-* **Optical Sensing:** 5 discrete IR sensors for wall detection.
-* **Precision Odometry:** Dual magnetic encoder PCBs designed to separate cleanly from the main board and mount directly onto the wheel shafts for tight closed-loop feedback.
-* **Actuation:** Dual discrete motor drivers tailored for responsive coreless/micro-motor management.
-* **Power Management:** Integrated reverse-polarity battery protection alongside efficient step-down conversion.
-* **Peripherals:** Onboard USB connectivity for debugging/programming, user input buttons, and status diagnostic LEDs.
+* **Core Processing & Wireless:** Powered by the **ESP32-C3 Mini** (RISC-V 32-bit single-core up to 160 MHz), running low-latency ESP-NOW peer-to-peer networking to sync 5 to 10 body-worn nodes without needing a Wi-Fi router.
+* **9-Axis Motion Sensing:** Onboard **Bosch BNO055** smart IMU running hardware sensor fusion to directly output absolute orientation (Quaternions and Euler angles) for accurate limb and body tracking.
+* **Power Management:** Integrated 1S (single-cell) LiPo battery charger with automatic power-path management for completely untethered wireless operation.
+* **Wearable Form Factor:** Ultra-compact 35 x 35 mm footprint tailored for mounting on body straps (limbs, torso, head) without restricting natural human movement.
+* **Peripherals:** USB Type-C connectivity for programming, debugging, and battery charging alongside status diagnostic LEDs.
 
 ---
 
 ## PCB Layer Architecture
 
-Designed in **Altium Designer**, the PCB utilizes a dense, optimized multi-layer stack-up to ensure signal integrity and clean power distribution for high-speed switching circuits:
+Designed in **Altium Designer**, the PCB utilizes a dense, optimized 4-layer stack-up to ensure signal integrity, clean power distribution, and minimal interference for wireless RF and analog sensor lines:
 
 | Layer | Designation | Description |
 | :--- | :--- | :--- |
-| **L1** | `SIG` | Primary Component & Top Signal Routing |
-| **L2** | `GND` | Solid Internal Ground Plane for EMI Shielding |
-| **L3** | `PWR` | Internal Power Distribution Plane |
+| **L1** | `SIG` | Primary Component Placement & Top Signal Routing |
+| **L2** | `GND` | Solid Internal Ground Plane for EMI & RF Shielding |
+| **L3** | `PWR` | Dedicated Internal Power Distribution Plane (3.3V / VBAT / VBUS) |
 | **L4** | `SIG + GND` | Bottom Signal Routing & Secondary Ground Pour |
 
 ### Layer Previews
@@ -32,16 +31,16 @@ Designed in **Altium Designer**, the PCB utilizes a dense, optimized multi-layer
 <summary><b>Click to expand layer views</b></summary>
 
 * **L1 (SIG):**  
-  <img width="100%" alt="L1 SIG" src="https://github.com/user-attachments/assets/b8c8f218-e328-44df-8001-f4d3a7ccfeab" />
+  <img width="100%" alt="L1 SIG" src="PASTE_YOUR_IMAGE_LINK_HERE" />
 
 * **L2 (GND):**  
-  <img width="100%" alt="L2 GND" src="https://github.com/user-attachments/assets/e4a734b8-dea2-48d9-a056-546f5d2985f7" />
+  <img width="100%" alt="L2 GND" src="PASTE_YOUR_IMAGE_LINK_HERE" />
 
 * **L3 (PWR):**  
-  <img width="100%" alt="L3 PWR" src="https://github.com/user-attachments/assets/49537f79-96bf-4cfc-a1e3-ba3ef9e25abb" />
+  <img width="100%" alt="L3 PWR" src="PASTE_YOUR_IMAGE_LINK_HERE" />
 
 * **L4 (SIG + GND):**  
-  <img width="100%" alt="L4 SIG+GND" src="https://github.com/user-attachments/assets/e3f815d3-db63-4863-9e2a-76b76b9e1210" />
+  <img width="100%" alt="L4 SIG+GND" src="PASTE_YOUR_IMAGE_LINK_HERE" />
 
 </details>
 
@@ -50,7 +49,7 @@ Designed in **Altium Designer**, the PCB utilizes a dense, optimized multi-layer
 ## 3D PCB Rendering
 
 <p align="center">
-  <img width="100%" alt="3D View" src="https://github.com/user-attachments/assets/591966c6-bb13-4303-9dbd-e98803343782" />
+  <img width="100%" alt="3D View" src="PASTE_YOUR_IMAGE_LINK_HERE" />
 </p>
 
 ---
@@ -58,7 +57,7 @@ Designed in **Altium Designer**, the PCB utilizes a dense, optimized multi-layer
 ## Repository Structure
 
 ```text
-├── Altium/               # Schematic & PCB layout project files
-├── Firmware/             # STM32 source code and maze-solving algorithms
+├── Altium/               # Schematic & 4-layer PCB layout project files
+├── Firmware/             # ESP-IDF / Arduino source code and ESP-NOW sync drivers
 ├── Fabrication/          # Gerber files, BOM, and pick-and-place data
 └── README.md             # Project documentation
