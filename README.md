@@ -7,7 +7,7 @@ An open-source, high-performance autonomous Micromouse designed for competitive 
 ## Key Hardware Features
 
 * **Core Processing:** Powered by the **STM32F405RGT6** (ARM Cortex-M4 at 168 MHz with 1MB Flash / 192KB RAM), running custom maze-solving and motor-control algorithms.
-* **Optical Sensing:** 5 discrete IR sensors paired with custom MOSFET switching for optimized pulse modulation and wall detection.
+* **Optical Sensing:** 5 discrete IR sensors for wall detection.
 * **Precision Odometry:** Dual magnetic encoder PCBs designed to separate cleanly from the main board and mount directly onto the wheel shafts for tight closed-loop feedback.
 * **Actuation:** Dual discrete motor drivers tailored for responsive coreless/micro-motor management.
 * **Power Management:** Integrated reverse-polarity battery protection alongside efficient step-down conversion.
